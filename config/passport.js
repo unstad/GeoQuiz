@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 module.exports = function() {
     const User = mongoose.model('User');
 
+//How passport will handle user serialization
     passport.serializeUser((user, done) => {
         done(null, user.id);
     });

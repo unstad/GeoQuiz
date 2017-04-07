@@ -1,62 +1,80 @@
 const User = require('mongoose').model('User');
+const passport = require('passport');
 
-exports.create = function(req, res, next) {
-    const user = new User(req.body);
+//returns a unified error message from a mongoose error object
+function getErrorMessage(err) {
+    let message = ' ';
 
-    user.save((err) => {
-        if (err) {
-            return next (err);
-        }else {
-            res.status(200).json(user);
+    if (err.code) {
+        switch (err.code) {
+            case 11000:
+            case 11001:
+                message = 'Username already exists';
+                break;
+            default:
+                message = 'Something went wrong';
         }
-    });
-};
-
-exports.list = function(req, res, next) {
-    User.find({}, (err, users) => {
-        if (err) {
-            return next (err)
-        }else {
-            res.status(200).json(users);
+    }else {
+        for (var errName in err.errors) {
+            if (err.errors[errName].message) message = 
+            err.errors[errName].message;
         }
-    });
+    }
+    return message;
 };
 
-exports.read = function(req, res) {
-    res.json(req.user);
+//renders signin page
+exports.renderSignin = function(req, res, next) {
+    if (!req.user) {
+        res.render('signin', {
+            title: 'Sign-in Form',
+            messages: req.flash('error') || req.flash('info')
+        });
+    }else {
+        return res.redirect('/');
+    }
 };
 
-exports.userByID = function(req, res, next, id) {
-    User.findOne({
-        _id: id
-    }, (err, user) => {
-        if (err) {
-            return next (err);
-        }else {
-            req.user = user;
-            next();
-        }
-    });
+
+//renders signup page
+exports.renderSignup = function(req, res, next) {
+    if (!req.user) {
+        res.render('signup', {
+            title: 'Sign-up Form',
+            messages: req.flash('error')
+        });
+    } else {
+        return res.redirect('/');
+    }
 };
 
-exports.update = function(res, req, next){
-    User.findByIdAndUpdate(req.user.id, req.body, {
-        'new' : true
-    }, (err, user) => {
-        if (err) {
-            return next (err);
-        } else {
-            res.status(200).json(user);
-        }
-    });
+//Uses user model to create new users
+exports.signup = function(req, res, next) {
+    if (!req.user) {
+        const user = new User(req.body);
+        var message=null;
+        user.provider = 'local';
+
+        //tries to save to mongodb
+        user.save((err) => {
+            if (err) {
+                const message = getErrorMessage(err);
+
+                req.flash('error', message);
+                return res.redirect('/signup');
+            }
+            req.login(user, (err)=> {
+                if (err) return next(err);
+                return res.redirect('/');
+            });
+        });
+    }else {
+        return res.redirect('/');
+    }
 };
 
-exports.delete = function(req, res, next) {
-    req.user.remove(err => {
-        if (err) {
-            return next (err);
-        } else {
-            res.status(200).json(req.user);
-        }
-    })
+exports.signout = function(req, res) {
+    req.logout();
+    res.redirect('/');
 };
+
