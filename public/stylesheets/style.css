@@ -1,0 +1,28 @@
+html {
+  font-size: 62.5%;
+}
+body {
+  padding: 50px;
+  background-image: url("/public/images/Book.png");
+  color: black;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 1.4em; /* equiv 14px */
+  line-height: 1.5; /* adapt to your design */
+}
+/* you shall not pass */
+div, textarea, table, td, th, code, pre, samp {
+  word-wrap: break-word;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.w50 {
+  width: 50%;
+}
+
+a {
+  color: #00B7FF;
+}
