@@ -16,6 +16,8 @@ div, textarea, table, td, th, code, pre, samp {
   word-wrap: break-word;
 }
 .question {
+  padding-top: 20px;
+  padding-left: 10px;
   font: 13px "Courier New", Helvetica, Arial, sans-serif;
 }
 .left {
@@ -26,6 +28,10 @@ div, textarea, table, td, th, code, pre, samp {
 }
 .w50 {
   width: 48%;
+}
+.map {
+  height:600px;
+  width: 90%;
 }
 
 a {
