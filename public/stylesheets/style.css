@@ -3,8 +3,10 @@ html {
 }
 body {
   padding: 50px;
-  background-image: url("/public/images/Book.png");
   color: black;
+  background-color: lightgray;
+  background-image: url("../img/Book.png");
+  background-size: cover;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   font-size: 1.4em; /* equiv 14px */
   line-height: 1.5; /* adapt to your design */
@@ -13,6 +15,9 @@ body {
 div, textarea, table, td, th, code, pre, samp {
   word-wrap: break-word;
 }
+.question {
+  font: 13px "Courier New", Helvetica, Arial, sans-serif;
+}
 .left {
   float: left;
 }
@@ -20,7 +25,7 @@ div, textarea, table, td, th, code, pre, samp {
   float: right;
 }
 .w50 {
-  width: 50%;
+  width: 48%;
 }
 
 a {

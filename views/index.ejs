@@ -11,7 +11,7 @@
 <div id="content">
   <div class="left w50">
     <p>Left part</p>
-    <div id="msg"></div>
+    <div id="question" class="question"></div>
     <button type="button" onclick="showText(0, 40)">Neste spørsmål:</button>
     <script>var showText = function (index, interval) {
             var text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut " +
@@ -21,7 +21,7 @@
                 "officia deserunt mollit anim id est laborum."; //TODO Move script to js document, get text from db
             if(index < text.length){
                 index++;
-                document.getElementById("msg").innerHTML = text.substr(0,index);
+                document.getElementById("question").innerHTML = text.substr(0,index);
                 setTimeout(function () {
                     showText(index, interval);
                 }, interval);
