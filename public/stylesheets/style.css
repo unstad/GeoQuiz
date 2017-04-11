@@ -2,10 +2,10 @@ html {
   font-size: 62.5%;
 }
 body {
-  padding: 50px;
+  padding: 5px;
   color: black;
-  background-color: lightgray;
-  background-image: url("../img/Book.png");
+  background-color: lightskyblue;
+  background-image: url("https://cdn.pixabay.com/photo/2015/09/16/19/22/fly-943184_960_720.jpg");
   background-size: cover;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   font-size: 1.4em; /* equiv 14px */
@@ -15,22 +15,61 @@ body {
 div, textarea, table, td, th, code, pre, samp {
   word-wrap: break-word;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: lightblue;
+  opacity: 0.75;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: cornflowerblue;
+}
 .question {
   padding-top: 20px;
   padding-left: 10px;
-  font: 13px "Courier New", Helvetica, Arial, sans-serif;
+  font: bold 13px "Courier New", Helvetica, Arial, sans-serif;
+
 }
 .left {
+  position: relative;
   float: left;
 }
+.nextButton {
+  position: absolute;
+  bottom: 100px;
+  right: 20px;
+  border-radius: 50%;
+  padding:20px;
+}
+.nextButton:hover {
+  background-color: darkgray;
+}
+
 .right {
   float: right;
 }
 .w50 {
   width: 48%;
+  height: 100vh;
 }
 .map {
-  height:600px;
+  height:80%;
   width: 90%;
 }
 

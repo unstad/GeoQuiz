@@ -9,10 +9,16 @@
 
 </head>
 <body>
+<ul class="horizontal">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
 <div id="content">
   <div class="left w50">
     <div id="question" class="question"></div>
-    <button type="button" onclick="showText(0, 40)">Neste spørsmål:</button>
+    <button class="nextButton" type="button" onclick="showText(0, 40)">Neste spørsmål</button>
     <script>var showText = function (index, interval) {
             var text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut " +
                 "labore dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut " +
