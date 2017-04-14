@@ -78,3 +78,31 @@ exports.signout = function(req, res) {
     res.redirect('/');
 };
 
+exports.saveOAuthUserProfile = function(req, profile, done) {
+    User.findOne({
+        provider: profile.provider,
+        providerId: profile.providerId
+    }, (err, user) => {
+        if (err) {
+            return done(err);
+        } else {
+            if (!user) {
+                const possibleusername = profile.username || 
+                ((profile.email) ? profile.email.split('@')[0] : '');
+
+                User.findUniqueUsername (possibleusername, null,
+                    (availableUsername) => {
+                        const newUser = new User(profile);
+                        newUser.username = availableUsername;
+
+                        newUser.save((err) => {
+                            return done(err, newUser);
+                        });
+                    });
+            } else {
+                return done (err, user);
+            }
+        }
+    });
+};
+
