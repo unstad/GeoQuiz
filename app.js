@@ -73,7 +73,9 @@ router.get("/", function(req, res){
 });
 
 router.get("/game", function (req, res) {
-  res.render("game.ejs", {root: __dirname + "/app/views" });
+  res.render("game.ejs", {
+      root: __dirname + "/app/views",
+        title: 'GeoQuiz'});
 
 });
 
