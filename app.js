@@ -1,13 +1,22 @@
 // Katharina: Er dette nødvendig? Virker som dette er kombinasjon av server.js og config/express.js
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');
+// var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
-var game = require('./app/routes/game');
-var users = require('./app/routes/users');
+var game = require('./app/routes/game.server.routes');
+var users = require('./app/routes/users.server.routes');
+
+mongoose.Promise = global.Promise;  // try to avoid error
+
+// Connect to db
+mongoose.connect('mongodb://heroku_4bpbxhwb:pkvY4zQ1QFBzo4Bfaz95gn9rLP7QOkDz@ds153400.mlab.com:53400/heroku_4bpbxhwb');
+
+// Databases to be used:
+User = require('./models/user.server/model.js');     // seems wrong hee=!
 
 var app = express();
 
