@@ -13,42 +13,39 @@ body {
 div, textarea, table, td, th, code, pre, samp {
   word-wrap: break-word;
 }
-.question {
-  padding-top: 20px;
-  padding-left: 10px;
-  font: bold 16px "Courier New", Helvetica, Arial, sans-serif;
+/*.question {*/
+  /*padding-top: 20px;*/
+  /*padding-left: 10px;*/
+  /*font: 16px "Courier New", Helvetica, Arial, sans-serif;*/
 
-}
+/*}*/
 
-.nextButton {
-  position: absolute;
-  bottom: 100px;
-  right: 20px;
-  border-radius: 50%;
-  padding:20px;
-}
-.nextButton:hover {
-  background-color: darkgray;
-}
-.w50 {
-}
+/*.nextButton {*/
+  /*position: absolute;*/
+  /*bottom: 100px;*/
+  /*right: 20px;*/
+  /*border-radius: 50%;*/
+  /*padding:20px;*/
+/*}*/
+/*.nextButton:hover {*/
+  /*background-color: darkgray;*/
+/*}*/
+/*.w50 {*/
+/*}*/
 
-.left {
-  position: relative;
-  float: left;
-  width:30%;
-  height: 100vh;
-}
-.right{
-  margin-top: 20px;
-  float: right;
-  width: 68%;
-  height: 85vh;
-}
+/*.left {*/
+  /*position: relative;*/
+  /*float: left;*/
+  /*width:30%;*/
+  /*height: 100vh;*/
+/*}*/
+/*.right{*/
+  /*margin-top: 20px;*/
+  /*float: right;*/
+  /*width: 68%;*/
+  /*height: 85vh;*/
+/*}*/
 
-
-
-
-a {
-  color: #00B7FF;
-}
+/*a {*/
+  /*color: #00B7FF;*/
+/*}*/
