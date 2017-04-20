@@ -4,8 +4,7 @@ html {
 body {
   padding: 5px;
   color: black;
-  background-color: lightskyblue;
-  background-image: url("https://cdn.pixabay.com/photo/2015/09/16/19/22/fly-943184_960_720.jpg");
+  background-image: url("../img/background.jpg");
   background-size: cover;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   font-size: 1.4em; /* equiv 14px */
@@ -78,7 +77,6 @@ li a:hover {
   width: 68%;
 }
 .w50 {
-  width: 48%;
   height: 100vh;
 }
 .map {
