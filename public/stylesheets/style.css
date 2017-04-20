@@ -57,10 +57,7 @@ li a:hover {
   font: bold 13px "Courier New", Helvetica, Arial, sans-serif;
 
 }
-.left {
-  position: relative;
-  float: left;
-}
+
 .nextButton {
   position: absolute;
   bottom: 100px;
@@ -71,9 +68,14 @@ li a:hover {
 .nextButton:hover {
   background-color: darkgray;
 }
-
+.left {
+  position: relative;
+  float: left;
+  width:30%;
+}
 .right{
   float: right;
+  width: 68%;
 }
 .w50 {
   width: 48%;
