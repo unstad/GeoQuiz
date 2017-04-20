@@ -1,0 +1,54 @@
+html {
+  font-size: 62.5%;
+}
+body {
+  padding: 5px;
+  color: black;
+  background-image: url("../img/background.jpg");
+  background-size: cover;
+  font: 1.4em "Lucida Grande", Helvetica, Arial, sans-serif;
+  line-height: 1.5; /* adapt to your design */
+}
+/* you shall not pass */
+div, textarea, table, td, th, code, pre, samp {
+  word-wrap: break-word;
+}
+.question {
+  padding-top: 20px;
+  padding-left: 10px;
+  font: bold 16px "Courier New", Helvetica, Arial, sans-serif;
+
+}
+
+.nextButton {
+  position: absolute;
+  bottom: 100px;
+  right: 20px;
+  border-radius: 50%;
+  padding:20px;
+}
+.nextButton:hover {
+  background-color: darkgray;
+}
+.w50 {
+}
+
+.left {
+  position: relative;
+  float: left;
+  width:30%;
+  height: 100vh;
+}
+.right{
+  margin-top: 20px;
+  float: right;
+  width: 68%;
+  height: 85vh;
+}
+
+
+
+
+a {
+  color: #00B7FF;
+}

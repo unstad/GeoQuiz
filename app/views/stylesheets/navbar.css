@@ -1,0 +1,36 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: lightblue;
+    opacity: 0.75;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li:last-child {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float:right;
+    font: bold 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: cornflowerblue;
+}
