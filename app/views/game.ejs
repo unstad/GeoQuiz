@@ -2,16 +2,15 @@
 <html>
 <head>
   <link rel='stylesheet' href="stylesheets/style.css" />
-  <script src="public/javaScript/question.js"></script>
-
+  <script src="javaScript/question.js"></script>
   <title>GeoQuiz</title>
   <link rel="shortcut icon" href="/img/globus.png" type="image/png">
 
 </head>
 <body>
 <ul class="horizontal">
-  <li><a href="#home">Hjem</a></li>
-  <li><a href="#login">Innlogging</a></li>
+  <li><a href="/">Hjem</a></li>
+  <li><a href="/signin">Innlogging</a></li>
   <li><a href="#about">Om GeoQuiz</a></li>
   <li>Du er i: London</li>
 </ul>
@@ -19,25 +18,13 @@
   <div class="left w50">
     <div id="question" class="question"></div>
     <button class="nextButton" type="button" onclick="showText(0, 40)">Neste spørsmål</button>
-    <script>var showText = function (index, interval) {
-            var text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut " +
-                "labore dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut " +
-                "aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum " +
-                "dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui " +
-                "officia deserunt mollit anim id est laborum."; //TODO Move script to js document, get text from db
-            if(index < text.length){
-                index++;
-                document.getElementById("question").innerHTML = text.substr(0,index);
-                setTimeout(function () {
-                    showText(index, interval);
-                }, interval);
-            }
-        }
-    </script>
+
+
     <span id="text_target"></span>
   </div>
   <div class="right w50">
-    <img src="https://snorfalorpagus.net/images/leaflet_pyqt4.jpg" class="map">
+      <script src="javaScript/map.js"></script>
+    <!--<img src="https://snorfalorpagus.net/images/leaflet_pyqt4.jpg" class="map">-->
   </div>
 </div>
 </body>
