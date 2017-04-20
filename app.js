@@ -1,4 +1,3 @@
-// Katharina: Er dette nødvendig? Virker som dette er kombinasjon av server.js og config/express.js
 var express = require('express');
 var path = require('path');
 // var favicon = require('serve-favicon');
@@ -38,12 +37,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use('/game', game);
 //app.use('/users', users);
 
-// catch 404 and forward to error handler
-/*app.use(function(req, res, next) {
+/*// catch 404 and forward to error handler
+app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
-});*/
+});
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -53,8 +52,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
-});
+  res.render('error.ejs', {root: __dirname + "/app/views" });
+});*/
 
 
 
@@ -66,13 +65,17 @@ app.use("/", router);
 router.get("/", function(req, res){
   console.log("Testing route");
   //res.sendFile("./app/views/index.ejs");
-  res.render("index.ejs", {root: __dirname + "/app/views" });
+  //res.render("index.ejs", {root: __dirname + "/app/views" });
+    res.render("index.ejs", {
+        root: __dirname + "/app/views",
+        title: 'Hello World',
+        userFullName: req.user ? req.user.fullName : ' '});
 });
 
 router.get("/game", function (req, res) {
   res.render("game.ejs", {root: __dirname + "/app/views" });
 
-})
+});
 
 mongoose.Promise = global.Promise;  // try to avoid error
 
