@@ -6,3 +6,6 @@ curl -XPOST -H "Content-Type: application/json" -d '{"firstName":"Katharina","la
 
 #ny herokuapp
 https://morning-reef-97881.herokuapp.com/ | https://git.heroku.com/morning-reef-97881.git
+
+#used leaflet-control-osm geocoder to implement search
+https://github.com/k4r573n/leaflet-control-osm-geocoder
