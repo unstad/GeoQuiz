@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "@mapbox/leaflet-pip": "1.1.0",
     "cookie-parser": "~1.3.3",
     "compression": "1.6.0",
     "connect-flash": "0.1.1",
