@@ -27,6 +27,8 @@ var router = express.Router();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 app.use(express.static(path.join(__dirname, '/app/views')));
+app.use(express.static(path.join(__dirname, '/app_client/auth/register')));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, '/app/views'));
@@ -49,9 +51,9 @@ app.use('/api', routesApi);
 
 // [SH] Otherwise render the index.html page for the Angular SPA
 // [SH] This means we don't have to map all of the SPA routes in Express
-app.use(function(req, res) {
-  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
-});
+//app.use(function(req, res) {
+  //res.sendFile(path.join(__dirname, 'app_client', 'index.ejs'));
+//});
 
 //app.use('/game', game);
 //app.use('/users', users);
@@ -112,15 +114,6 @@ app.use(function(err, req, res, next) {
 
 app.use("/", router);
 
-router.get("/", function(req, res){
-  console.log("Testing route");
-  //res.sendFile("./app/views/index.ejs");
-  //res.render("index.ejs", {root: __dirname + "/app/views" });
-    res.render("index.ejs", {
-        root: __dirname + "/app/views",
-        title: 'Hello World',
-        userFullName: req.user ? req.user.fullName : ' '});
-});
 
 router.get("/game", function (req, res) {
   res.render("game.ejs", {
@@ -129,6 +122,26 @@ router.get("/game", function (req, res) {
 
 });
 
+router.get("/register", function (req, res) {
+  res.render("register.view.ejs", {
+      root: __dirname + "/app/view",
+        title: 'GeoQuiz'});
+
+});
+
+router.get("/signin", function (req, res) {
+  res.render("login.view.ejs", {
+      root: __dirname + "/app/view",
+        title: 'GeoQuiz'});
+
+});
+
+router.get("/", function (req, res) {
+  res.render("home.view.ejs", {
+      root: __dirname + "/app/view",
+        title: 'GeoQuiz'});
+
+});
 mongoose.Promise = global.Promise;  // try to avoid error
 
 // Connect to db
