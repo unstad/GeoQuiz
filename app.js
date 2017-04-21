@@ -48,12 +48,6 @@ app.use(passport.initialize());
 // [SH] Use the API routes when path starts with /api
 app.use('/api', routesApi);
 
-// [SH] Otherwise render the index.html page for the Angular SPA
-// [SH] This means we don't have to map all of the SPA routes in Express
-//app.use(function(req, res) {
-  //res.sendFile(path.join(__dirname, 'app_client', 'index.ejs'));
-//});
-
 //app.use('/game', game);
 //app.use('/users', users);
 
