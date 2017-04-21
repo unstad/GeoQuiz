@@ -23,7 +23,6 @@ var routesApi = require('./app/routes/index');
 var app = express();
 var router = express.Router();
 
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 app.use(express.static(path.join(__dirname, '/app/views')));
@@ -90,6 +89,8 @@ app.use(function(err, req, res, next) {
 
 
 /*// catch 404 and forward to error handler
+/* måtte kommentere bort denne for å ikke alltid komme til error-siden
+//catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
@@ -142,6 +143,7 @@ router.get("/", function (req, res) {
         title: 'GeoQuiz'});
 
 });
+
 mongoose.Promise = global.Promise;  // try to avoid error
 
 // Connect to db

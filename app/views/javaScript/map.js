@@ -1,13 +1,11 @@
-/**
- * Created by GalinaJonat on 06/04/17.
- */
+
 //initialize map with given center and zoom
-var map = L.map('mapid').setView(L.latLng(63.42239, 10.42993), 13);
+const map = L.map('mapid').setView(L.latLng(63.42239, 10.42993), 13);
 
 //creating tile layer and adding it to map
-var tilelayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+const tilelayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
     '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
     'Imagery © <a href="http://mapbox.com">Mapbox</a>',
     id: 'mapbox.streets',
@@ -15,6 +13,12 @@ var tilelayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.pn
 });
 
 map.addLayer(tilelayer);
+
+//geocoder allowing for search
+var osmGeocoder = new L.Control.OSMGeocoder();
+
+map.addControl(osmGeocoder);
+
 
 // doing something when click on map
 function onMapClick(e){
