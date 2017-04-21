@@ -6,15 +6,12 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-//var game = require('./app/routes/game.server.routes');
-//var users = require('./app/routes/users.server.routes');
 
 // Databases to be used:
 //User = require('./models/user.server/model.js');     // seems wrong hee=!
 
 var app = express();
 var router = express.Router();
-
 
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '/app/views')));
@@ -37,7 +34,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use('/game', game);
 //app.use('/users', users);
 
-/*// catch 404 and forward to error handler
+/* måtte kommentere bort denne for å ikke alltid komme til error-siden
+//catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
@@ -78,6 +76,13 @@ router.get("/game", function (req, res) {
         title: 'GeoQuiz'});
 
 });
+
+/*TODO: database calls for signin
+router.get("/signin", function (req, res) {
+    res.render('signin.ejs', {
+        root: __dirname + "app/views",
+        title: 'Signin'});
+}); */
 
 mongoose.Promise = global.Promise;  // try to avoid error
 
