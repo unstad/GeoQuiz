@@ -1,5 +1,6 @@
 
 
+
 //initialize map with given center and zoom
 const map = L.map('mapid').setView(L.latLng(63.42239, 10.42993), 13);
 
@@ -50,14 +51,38 @@ var answerPolygon = L.geoJSON({
     }]
 });
 
-var answerText = "htrat";
+var answerText = "Hello GIS-World";
+
+var checkDistance = function(e){
+    console.log(e.distanceTo(63.41504, 10.40983));
+}
+
+// var checkAnswer = function(geojson, e){
+//     var gjLayer = L.geoJson(geojson);
+//     var groupOfNonGroup = L.layerGroup();
+//
+//     function copyToGroupOfNonGroup(group) {
+//         group.eachLayer(function (layer) {
+//             if (layer instanceof L.LayerGroup) {
+//                 copyToGroupOfNonGroup(layer);
+//             } else {
+//                 layer.addTo(groupOfNonGroup);
+//             }
+//         });
+//     }
+//
+//     copyToGroupOfNonGroup(gjLayer);
+//     if (leafletPip.pointInLayer(e.latlng, geojson) !== [])
+//         answerPolygon.bindPopup(answerText).openPopup();
+// }
+
 
 // doing something when click on map
-function onMapClick(e){
-    clickedPoint = e.latlng;
+// function onMapClick(e){
+//     clickedPoint = e.latlng;
 
     // want to send clickedPoint to app!!!!!!!!!!!!!!
-    console.log("clicked "+ clickedPoint);
+    // console.log("clicked "+ clickedPoint);
 /*
     if (leafletPip.pointInLayer(clickedPoint, answerPolygon) !== [])
         answerPolygon.bindPopup(answerText).openPopup();
@@ -68,6 +93,6 @@ function onMapClick(e){
 
 
     //questionHandler(e.latLng)*/
-};
+// };
 
-map.on('click', onMapClick);
+// map.on('click', onMapClick);

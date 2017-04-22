@@ -77,3 +77,7 @@ exports.resetAnswers = function(req, res) {
 		res.json({'status': 200, 'message': 'All questions have been reset'});
 	});	
 };
+
+exports.checkAnswer = function (req, res) {
+
+}
