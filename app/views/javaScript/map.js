@@ -19,10 +19,27 @@ var osmGeocoder = new L.Control.OSMGeocoder();
 
 map.addControl(osmGeocoder);
 
+// quiz function(s):
+// import quiz model
+var Quiz = require('./app/models/quiz');
+
+// needs to be updated for each new question
+var answerPolygon = Quiz.geojson_coordinates;
+var answerText = Quiz.answer;
 
 // doing something when click on map
 function onMapClick(e){
-    console.log(e.latlng);
-}
+    var clickedPoint = e.latlng;
+
+    if (leafletPip.pointInLayer(clickedPoint, answerPolygon) !== [])
+        answerPolygon.bindPopup(answerText).openPopup();
+        // tell app to move to the next question --- How to do that?
+
+    //else
+        // tell app that answer is wrong, so it can give a sound
+
+
+    //questionHandler(e.latLng)
+};
 
 map.on('click', onMapClick);
