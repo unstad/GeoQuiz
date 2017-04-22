@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-//var game = require('./app/routes/game.server.routes');
+var game = require('./app/routes/game.server.routes');
 //var users = require('./app/routes/users.server.routes');
 
 // Databases to be used:
@@ -76,23 +76,15 @@ app.use(function(err, req, res, next) {
   res.render('error.ejs', {root: __dirname + "/app/views" });
 });*/
 
-
-
-// ROUTES
-
-
-app.use("/", router);
-
-router.get("/game", function (req, res) {
-  res.render("game.ejs", {
-      root: __dirname + "/app/views",
-        title: 'GeoQuiz'});
-
-});
-
 mongoose.Promise = global.Promise;  // try to avoid error
 
 // Connect to db
 mongoose.connect('mongodb://heroku_npcxr9bk:ieb5lgo7ejufsm557rnife02s4@ds111851.mlab.com:11851/heroku_npcxr9bk');
+
+// Load models
+require('./app/models/questions.js');
+
+// Initialize game routes
+game(app);
 
 module.exports = app;
