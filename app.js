@@ -17,7 +17,7 @@ require('./app/config/passport');
 // Databases to be used:
 //User = require('./models/user.server/model.js');     // seems wrong hee=!
 // questionSchema-DB
-var Quiz = require('./app/models/questionSchema');
+var Quiz = require('./app/models/quiz');
 
 // [SH] Bring in the routes for the API (delete the default routes)
 var routesApi = require('./app/routes/index');
@@ -117,7 +117,7 @@ router.get("/game", function (req, res) {
       root: __dirname + "/app/views",
         title: 'GeoQuiz'});
 
-});
+    });
 
 router.get("/register", function (req, res) {
   res.render("register.view.ejs", {
@@ -140,22 +140,20 @@ router.get("/", function (req, res) {
 
 });
 
-/*
-// route for questionSchema
-router.route('/game')
-    .get(function (req, res){
-        Quiz.find(){
-            // function for quiz
-        }
-    })
-*/
 
+// Database setup
 
 mongoose.Promise = global.Promise;  // try to avoid error
 
 // Connect to db
 mongoose.connect('mongodb://heroku_npcxr9bk:ieb5lgo7ejufsm557rnife02s4@ds111851.mlab.com:11851/heroku_npcxr9bk');
 
+// accessing database
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error'));
+db.once('open', function(){
+    console.log("connected")
+});
 
 
 module.exports = app;
