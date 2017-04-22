@@ -16,6 +16,8 @@ require('./app/config/passport');
 
 // Databases to be used:
 //User = require('./models/user.server/model.js');     // seems wrong hee=!
+// questionSchema-DB
+var Quiz = require('./app/models/questionSchema');
 
 // [SH] Bring in the routes for the API (delete the default routes)
 var routesApi = require('./app/routes/index');
@@ -137,6 +139,17 @@ router.get("/", function (req, res) {
         title: 'GeoQuiz'});
 
 });
+
+/*
+// route for questionSchema
+router.route('/game')
+    .get(function (req, res){
+        Quiz.find(){
+            // function for quiz
+        }
+    })
+*/
+
 
 mongoose.Promise = global.Promise;  // try to avoid error
 
