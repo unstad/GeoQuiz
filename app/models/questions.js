@@ -14,4 +14,8 @@ var QuestionSchema = new Schema({
     geojson_coordinates: [Schema.Types.GeometryCollection],
 }, {collection: "quiz"});
 
+QuestionSchema.methods.getQuestion = function () {
+    return this.question;
+}
+
 module.exports = mongoose.model('Question', QuestionSchema);

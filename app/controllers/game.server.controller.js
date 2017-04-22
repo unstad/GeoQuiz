@@ -21,8 +21,18 @@ exports.nextQuestion = function(req, res) {
 			errorMessage(err, res);
 			return;
 		}
-		res.json(question);
+		res.json(question.question);
 	});
+};
+
+exports.questionCoordinates = function(req, res) {
+    return Question.findOne({'answered': false}, function (err, question) {
+        if (err) {
+            errorMessage(err, res);
+            return;
+        }
+        res.json(question.geojson_coordinates);
+    });
 };
 
 // Tar mot svar på spørsmål og marker spørsmålet som besvart hvis svaret er riktig

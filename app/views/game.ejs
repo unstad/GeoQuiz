@@ -4,6 +4,17 @@
     <%- include partials/header.ejs %>
   <link rel='stylesheet' href="stylesheets/game.css" />
   <script src="javaScript/question.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script>
+      $(document).ready(function(){
+          $("button").click(function(){
+              $.get("/api/questions/next", function(data){
+                  showText(data, 0, 30);
+              });
+          });
+      });
+  </script>
+
 
   <!-- JS and stylesheet needed for map -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
@@ -18,6 +29,7 @@
     <link rel="stylesheet" href="./stylesheets/Control.OSMGeocoder.css" />
 
 
+
 </head>
 <body>
 <%- include partials/navbar.ejs %>
@@ -26,13 +38,29 @@
   <div class="left w50">
     <div id="question" class="question"></div>
 
+
+
+
     <button class="nextButton" type="button" onclick="showText(0, 30)">Neste spørsmål</button>
 
     <span id="text_target"></span>
   </div>
   <div id="mapid" class="right w50">
-     <script src="/javaScript/map.js"></script>
+     <script id="map" src="/javaScript/map.js"></script>
+    <!--<script>-->
+        <!--var clickedPoint = clickedPoint;-->
+        <!--$(document).ready(function(){-->
+            <!--$("checkbutton").click(function(){-->
+                <!--$.get("/api/questions/coors"), function(data){-->
+                    <!--showText(data, 0, 30);-->
+                <!--});-->
+            <!--});-->
+        <!--});-->
+
+
+    </script>
   </div>
+
 </div>
 </body>
 <!--<h1><%= title %></h1>-->
