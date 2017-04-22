@@ -80,4 +80,4 @@ exports.resetAnswers = function(req, res) {
 
 exports.checkAnswer = function (req, res) {
 
-}
+};
