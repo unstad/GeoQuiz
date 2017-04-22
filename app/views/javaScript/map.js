@@ -3,8 +3,6 @@
 //initialize map with given center and zoom
 const map = L.map('mapid').setView(L.latLng(63.42239, 10.42993), 13);
 
-var clickedPoint;
-
 //creating tile layer and adding it to map
 const tilelayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         maxZoom: 18,
@@ -54,11 +52,17 @@ var answerText = "htrat";
 
 // doing something when click on map
 function onMapClick(e){
-    clickedPoint = e.latlng;
+    var  clickedPoint = e.latlng;
 
     // want to send clickedPoint to app!!!!!!!!!!!!!!
     console.log("clicked "+ clickedPoint);
-/*
+
+    if (answerPolygon.getBounds().contains(clickedPoint))
+        console.log(answerText);
+    else
+        console.log(false);
+
+    /*
     if (leafletPip.pointInLayer(clickedPoint, answerPolygon) !== [])
         answerPolygon.bindPopup(answerText).openPopup();
         // tell app to move to the next question --- How to do that?
@@ -68,6 +72,5 @@ function onMapClick(e){
 
 
     //questionHandler(e.latLng)*/
-};
-
+        }
 map.on('click', onMapClick);

@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var game = require('./app/routes/game.server.routes');
-var leafletPip = require('@mapbox/leaflet-pip');
 
 
 var Quiz = require('./app/models/quizSchema');
