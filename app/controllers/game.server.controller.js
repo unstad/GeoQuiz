@@ -34,6 +34,11 @@ exports.answerQuestion = function(req, res) {
 			errorMessage(err, res);
 			return;
 		}
+		// Instead of check text answer, check coordinates
+		/*
+		var lat = answer[0];
+		var lon = answer[1];
+		*/
 		if (question.answer_city !== answerFromUser) {
 			res.status(400).json({'status': 400, 'message': 'Incorrect answer'});
 			return;
