@@ -17,7 +17,7 @@ require('./app/config/passport');
 // Databases to be used:
 //User = require('./models/user.server/model.js');     // seems wrong hee=!
 // questionSchema-DB
-var Quiz = require('./app/models/quiz');
+var Quiz = require('./app/models/quizSchema');
 
 // [SH] Bring in the routes for the API (delete the default routes)
 var routesApi = require('./app/routes/index');
@@ -155,8 +155,6 @@ db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function(){
     console.log("connected")});
 
-var Quiz = require('./app/models/quizSchema');
-
 var newQuiz = Quiz({
     "_id": 1,
     "question": "Det hele åpner med at du møter en dame i slutten av 70-årene som forteller at hun har gjort politisk comeback på sine eldre dager. Men i en seksårsperiode på 1990-tallet var hun president, og hennes folk her hjemme er spesielt aktive i påsken. Likevel var hele verden hennes arbeidsfelt, og den byen som var hovedsete for hennes arbeid, er ditt neste reisemål. Selve symbolet for hen- nes virke er omvendt av flagget i landet der, men i andre deler av verden brukes et himmellegeme som symbol. Også en kollega av henne fra hennes første politiske karriere tilbrakte mye tid i denne byen på 1990- og 2000-talllet, og begge er de engasjert i arbeid for mennesker og menneskenes helse.",
@@ -171,6 +169,8 @@ var newQuiz = Quiz({
     }
 });
 
-console.log(newQuiz.answer);
+var Questions = require('./app/models/allQuestions');
+
+for(var i = 0; i < Questions.length; i++) console.log(Questions[i].answer_city);
 
 module.exports = app;

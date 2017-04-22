@@ -1,4 +1,4 @@
-var Quiz = require('./app/models/quizSchema');
+var Quiz = require('../../app/models/quizSchema');
 
 var question1 = Quiz({
     "_id": 1,
@@ -80,12 +80,12 @@ var question6 = Quiz({
 
 var questions = [question1, question2, question3, question4, question5, question6];
 
-questions.methods.findById = function (id) {
-    id = id % questions.length;
-    for(var i = 0; i < 6; i++){
-        if(questions[i]._id == id) return questions[i];
-    }
-    return null;
-}
+// questions.methods.findQuestion = function (id) {
+//     id = id % questions.length;
+//     for(var i = 0; i < 6; i++){
+//         if(questions[i]._id == id) return questions[i];
+//     }
+//     return null;
+// }
 
 module.exports = questions;

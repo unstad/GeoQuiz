@@ -14,6 +14,17 @@ var QuizSchema = new Schema({
             coordinates: Array
         }
     }
+
+    // geojson_coordinates: {'type': {
+    //     type: String,
+    //     required: true,
+    // },
+    //     coordinates: [
+    //         [
+    //             {type: [Number]}
+    //         ]
+    //     ]
+    // }
 }, {collection: 'Quiz'});
 
 QuizSchema.methods.getQuestion = function () {
