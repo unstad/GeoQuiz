@@ -5,29 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var passport = require('passport');
 //var game = require('./app/routes/game.server.routes');
 //var users = require('./app/routes/users.server.routes');
 
-// [SH] Bring in the data model
-require('./app/models/db');
-// [SH] Bring in the Passport config after model is defined
-require('./app/config/passport');
-
 // Databases to be used:
 //User = require('./models/user.server/model.js');     // seems wrong hee=!
-
-// [SH] Bring in the routes for the API (delete the default routes)
-var routesApi = require('./app/routes/index');
 
 var app = express();
 var router = express.Router();
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'app_client')));
 app.use(express.static(path.join(__dirname, '/app/views')));
-app.use(express.static(path.join(__dirname, '/app_client/auth/register')));
-
 
 // view engine setup
 app.set('views', path.join(__dirname, '/app/views'));
@@ -42,22 +30,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// [SH] Initialise Passport before using the route middleware
-app.use(passport.initialize());
-
-// [SH] Use the API routes when path starts with /api
-app.use('/api', routesApi);
-
 //app.use('/game', game);
 //app.use('/users', users);
-
-// [SH] Catch unauthorised errors
-app.use(function (err, req, res, next) {
-  if (err.name === 'UnauthorizedError') {
-    res.status(401);
-    res.json({"message" : err.name + ": " + err.message});
-  }
-});
 
 // development error handler
 // will print stacktrace
@@ -109,31 +83,9 @@ app.use(function(err, req, res, next) {
 
 app.use("/", router);
 
-
 router.get("/game", function (req, res) {
   res.render("game.ejs", {
       root: __dirname + "/app/views",
-        title: 'GeoQuiz'});
-
-});
-
-router.get("/register", function (req, res) {
-  res.render("register.view.ejs", {
-      root: __dirname + "/app/view",
-        title: 'GeoQuiz'});
-
-});
-
-router.get("/signin", function (req, res) {
-  res.render("login.view.ejs", {
-      root: __dirname + "/app/view",
-        title: 'GeoQuiz'});
-
-});
-
-router.get("/", function (req, res) {
-  res.render("home.view.ejs", {
-      root: __dirname + "/app/view",
         title: 'GeoQuiz'});
 
 });
@@ -142,7 +94,5 @@ mongoose.Promise = global.Promise;  // try to avoid error
 
 // Connect to db
 mongoose.connect('mongodb://heroku_npcxr9bk:ieb5lgo7ejufsm557rnife02s4@ds111851.mlab.com:11851/heroku_npcxr9bk');
-
-
 
 module.exports = app;
