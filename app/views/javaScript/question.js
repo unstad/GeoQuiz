@@ -1,8 +1,16 @@
 /**
  * Created by Lars on 20.04.2017.
  */
+
+var getQuestion = function(index) {
+    //give me question nr 5
+    var id = index;
+    var question = "question";
+}
+
 var showText = function (index, interval) {
-    var text = "Du inviteres på restaurant for å spise \"blainnabaill\". Men når " +
+    var text =
+        "Du inviteres på restaurant for å spise \"blainnabaill\". Men når " +
         "kelneren kommer med en tallerken til deg, er det ikke mat på den, men " +
         "derimot en konvolutt. <br><br> Utenpå konvolutten er det et bilde som v" +
         "iser en naken mann og en naken kvinne med fikenblad som lendeklede." +
