@@ -18,7 +18,6 @@ var osmGeocoder = new L.Control.OSMGeocoder();
 
 map.addControl(osmGeocoder);
 
-var correctPlaces = new Array;
 // quiz function(s):
 
 
@@ -56,8 +55,12 @@ var checkDistance = function(e){
 //         answerPolygon.bindPopup(answerText).openPopup();
 // }
 
-
-var polyline = L.polyline([L.latLng(63.41988, 10.43008)], {color: '#0b52ff'});
+// reisen starter i Trondheim
+var startPoint = L.latLng(63.41988, 10.43008);
+L.marker(startPoint, {icon: L.icon({
+    iconUrl: '../../img/Ski_House',
+    iconSize: [38, 38]})}).addTo(map);
+var polyline = L.polyline([startPoint], {color: '#0b52ff'});
 
 polyline.addTo(map);
 // checking if answer area is clicked correctly
@@ -69,9 +72,10 @@ function onMapClick(e) {
     if (answerPolygon.getBounds().contains(clickedPoint)) {
         correctSound.play();
         console.log(answerText);
-        correctPlaces.push(clickedPoint);
         polyline.addLatLng(clickedPoint);
-        L.marker(clickedPoint).addTo(map); // marker som etter hvert skal ha samlet inn alle stedene vi har vært innom :)
+        L.marker(clickedPoint, {icon: L.icon({
+            iconUrl: '../../img/koffert.png',
+            iconSize: [38, 38]})}).addTo(map); // marker som etter hvert skal ha samlet inn alle stedene vi har vært innom :)
         //TODO send true to game controller to react to correct answer
         console.log(correctPlaces);
     }
