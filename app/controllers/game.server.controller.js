@@ -27,7 +27,8 @@ exports.nextQuestion = function(req, res) {
 };
 
 exports.questionCoordinates = function(req, res) {
-    return Question.findOne({'answered': false}, function (err, question) {
+	//Katharina: endret fra answered: false til _id
+    return Question.findOne({'_id': id}, function (err, question) {
         if (err) {
             errorMessage(err, res);
             return;
@@ -45,24 +46,17 @@ exports.answerQuestion = function(req, res) {
 			errorMessage(err, res);
 			return;
 		}
-		// Instead of check text answer, check coordinates
-		/*
-		var lat = answer[0];
-		var lon = answer[1];
-		*/
 
-		// hvis kartet returnerer true:
-
-		if (question.answered==false) {
-			res.status(400).json({'status': 400, 'message': 'Incorrect answer'});
-			return;
+		if (isCorrect) {
+            req.nextQuestion();	// TODO funker denne???
+            res.json({'status': 200, 'message': 'Answer accepted'});
+            question.answered = true;
+			return id+=1;
 		}
-		question.answered = true;
 		question.save(function (err) {
 			console.log('Failed store question with id ' + questionId);
 		});
-		req.nextQuestion();	// TODO funker denne???
-		res.json({'status': 200, 'message': 'Answer accepted'});
+        res.status(400).json({'status': 400, 'message': 'Incorrect answer'});
 	});
 };
 
