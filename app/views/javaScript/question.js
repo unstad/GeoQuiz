@@ -3,21 +3,35 @@
  */
 
 var currentLocation = "Trondheim";
-var questionId;
+var nextLocation;
+var questionId = 0;
 var questionText;
 var answerGeojson;
 var answerText;
 
-var updateLocation = function () {
-    document.getElementById("location").innerHTML = "Du er her: " + currentLocation;
+var updateAll = function() {
+    questionId++;
+    console.log(questionId);
+    $.get('/api/questions/question/',
+        function(question){
+            questionId = question._id;
+            console.log(questionId);
+            questionText = question.question;
+            answerGeojson = question.geojson_coordinates;
+            answerText = question.answer;
+            nextLocation = question.answer_city;
+            showText("location", "Du er her: " + currentLocation, 0, 40);
+            showText("question",questionText, 0, 5);
+            getPolygon();
+    });
 }
 
-var showText = function (text, index, interval) {
+var showText = function (target, text, index, interval) {
     if(index < text.length){
         index++;
-        document.getElementById("question").innerHTML = text.substr(0,index);
+        document.getElementById(target).innerHTML = text.substr(0,index);
         setTimeout(function () {
-            showText(text, index, interval);
+            showText(target, text, index, interval);
         }, interval);
     }
 }

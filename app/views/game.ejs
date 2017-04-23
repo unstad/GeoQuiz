@@ -9,11 +9,8 @@
   <script>
       $(document).ready(function(){
           $("button").click(function(){
-              $.get("/api/questions/next", function(data){
-                  showText(data, 0, 30);
-              });
-              updateLocation();
-          });
+              updateAll();
+          })
       });
   </script>
 

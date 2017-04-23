@@ -13,7 +13,7 @@ exports.render = function(req, res) {
 	  title: 'GeoQuiz'
 	});
 };
-var id = 1;
+var id = 0;
 //TODO sjekke om den stemmer når resten er ferdig!
 // Finn det første spørsmålet som ikke har noe svar
 exports.nextQuestion = function(req, res) {
@@ -22,8 +22,21 @@ exports.nextQuestion = function(req, res) {
 			errorMessage(err, res);
 			return;
 		}
-		res.json(question.question);
+		res.json(Question);
 	});
+};
+
+exports.question = function(req, res) {
+	id++;
+	console.log(id);
+    //Katharina: endret fra answered: false til _id
+    return Question.findOne({'_id': id}, function (err, question) {
+        if (err) {
+            errorMessage(err, res);
+            return;
+        }
+        res.json(question);
+    });
 };
 
 exports.questionCoordinates = function(req, res) {
