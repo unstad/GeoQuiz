@@ -2,10 +2,14 @@
  * Created by Lars on 20.04.2017.
  */
 
-var getQuestion = function(index) {
-    //give me question nr 5
-    var id = index;
-    var question = "question";
+var currentLocation = "Trondheim";
+var questionId;
+var questionText;
+var answerGeojson;
+var answerText;
+
+var updateLocation = function () {
+    document.getElementById("location").innerHTML = "Du er her: " + currentLocation;
 }
 
 var showText = function (text, index, interval) {

@@ -12,6 +12,7 @@
               $.get("/api/questions/next", function(data){
                   showText(data, 0, 30);
               });
+              updateLocation();
           });
       });
   </script>
@@ -42,7 +43,7 @@
 
 
 
-    <button class="nextButton" type="button" onclick="showText(0, 30)">Neste spørsmål</button>
+    <button class="nextButton" type="button" onclick="showText(0, 30);">Neste spørsmål</button>
 
     <span id="text_target"></span>
   </div>
