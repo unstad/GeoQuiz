@@ -69,12 +69,17 @@ var checkDistance = function(e){
 // }
 
 // reisen starter i Trondheim
+var allMarkers = new L.featureGroup();
+
 const trondheim=[63.41988, 10.43008];//katharina
 var startPoint = L.latLng(trondheim);
 L.marker(startPoint, {icon: L.icon({
     iconUrl: '../../img/Ski_House',
     iconSize: [38, 38]})}).addTo(map);
+L.marker(startPoint).addTo(allMarkers);
 var polyline = L.polyline([startPoint], {color: '#0b52ff'});
+
+
 
 polyline.addTo(map);
 // checking if answer area is clicked correctly
@@ -89,7 +94,7 @@ function onMapClick(e) {
         L.marker(clickedPoint, {icon: L.icon({
             iconUrl: '../../img/koffert.png',
             iconSize: [38, 38]})}).addTo(map); // marker som etter hvert skal ha samlet inn alle stedene vi har vært innom :)
-        //TODO send true to game controller to react to correct answer
+        L.marker(clickedPoint).addTo(allMarkers);
         updateAll();
 
     }
@@ -120,5 +125,9 @@ function onMapClick(e) {
     //questionHandler(e.latLng)*/
 map.on('click', onMapClick);
 // };
+
+var zoomOut = function(){
+    map.fitBounds(allMarkers.getBounds());
+}
 
 // map.on('click', onMapClick);
