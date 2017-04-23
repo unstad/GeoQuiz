@@ -17,5 +17,5 @@ var showText = function (text, index, interval) {
         }, interval);
     }
 }
-var snd = new Audio('sounds/spitfire.mp3');
+var snd = new Audio('sounds/Spitfire.mp3');
 var correctSound = new Audio('sounds/correct.mp3');

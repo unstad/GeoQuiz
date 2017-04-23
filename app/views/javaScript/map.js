@@ -80,7 +80,7 @@ function onMapClick(e) {
         console.log(correctPlaces);
     }
     else {
-         // snd.play();
+         snd.play();
         alert("Du har nok reist feil. Prøv på nytt!");
     }
 }
