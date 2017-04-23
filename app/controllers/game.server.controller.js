@@ -75,19 +75,7 @@ exports.answerQuestion = function(req, res) {
 
 // Tilbakestill alle spørsmål som har blitt besvart
 exports.resetAnswers = function(req, res) {
-	return Question.find({"answered": true}, function (err, questions) {
-		if (err) {
-			errorMessage(err, res);
-			return;
-		}
-		questions.forEach(function (question) {
-			question.answered = false;
-			question.save(function (err) {
-				console.log('Failed reset question with id ' + question._id);
-			});
-		});
-		res.json({'status': 200, 'message': 'All questions have been reset'});
-	});	
+	id = 0;
 };
 
 exports.checkAnswer = function (req, res) {

@@ -96,12 +96,8 @@ function onMapClick(e) {
             iconUrl: '../../img/koffert.png',
             iconSize: [38, 38]})}).addTo(map); // marker som etter hvert skal ha samlet inn alle stedene vi har vært innom :)
         //TODO send true to game controller to react to correct answer
-        isCorrect=true;
-        $.post("/api/questions/:questionId/answer",
-            {
-                "answer": isCorrect
-            }//Katharina
-        )
+        updateAll();
+
     }
     else {
          snd.play();
