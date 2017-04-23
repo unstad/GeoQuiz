@@ -21,8 +21,7 @@ map.addControl(osmGeocoder);
 // quiz function(s):
 
 
-//TODO get answerpolygon geojson data (via AJAX?!) bruk questionCoordinates in game.server.controller
-/*var answerPolygon = L.geoJSON({
+/*
     "type": "GeometryCollection",
     "geometries": [{
         "type": "MultiPolygon",
@@ -94,7 +93,6 @@ function onMapClick(e) {
             iconUrl: '../../img/koffert.png',
             iconSize: [38, 38]})}).addTo(map); // marker som etter hvert skal ha samlet inn alle stedene vi har vært innom :)
         //TODO send true to game controller to react to correct answer
-        console.log(correctPlaces);
         isCorrect=true;
         $.post("/api/questions/:questionId/answer",
             {
