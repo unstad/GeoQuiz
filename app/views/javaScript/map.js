@@ -66,14 +66,17 @@ function onMapClick(e){
     console.log("clicked "+ clickedPoint);
 
     if (answerPolygon.getBounds().contains(clickedPoint)) {
+        correctSound.play();
         // answerPolygon.bindPopup(answerText).openOn(map); blir ikke gjenkjent som funksjon -.-
         console.log(answerText);
         L.marker(clickedPoint).addTo(map); // marker som etter hvert skal ha samlet inn alle stedene vi har vært innom :)
         //TODO send true to game controller to react to correct answer
     }
-    else
-        console.log(false);
-        //TODO send false to game controller to react to wrong answer
+    else{
+        snd.play();
+        alert("Du har nok reist feil. Prøv på nytt!");
+    }
+
 
     /*
 =======
