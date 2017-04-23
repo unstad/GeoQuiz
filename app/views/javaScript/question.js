@@ -2,8 +2,8 @@
  * Created by Lars on 20.04.2017.
  */
 
-var currentLocation = "Trondheim";
-var nextLocation;
+var currentLocation;
+var nextLocation= "Trondheim";
 var questionId = 0;
 var questionText;
 var answerGeojson;
@@ -19,11 +19,16 @@ var updateAll = function() {
             questionText = question.question;
             answerGeojson = question.geojson_coordinates;
             answerText = question.answer;
+            currentLocation = nextLocation;
             nextLocation = question.answer_city;
-            showText("location", "Du er her: " + currentLocation, 0, 40);
-            showText("question",questionText, 0, 5);
+            showText("location", "Du er i " + currentLocation + " og har klart " + (questionId - 1) + " reisemål", 0, 40);
+            showText("question",questionText, 0, 20);
             getPolygon();
     });
+}
+var wikiLink = function(){
+    if(currentLocation == undefined) document.getElementById("wiki").href = "https://no.wikipedia.org/wiki/" + "trondheim";
+    else                             document.getElementById("wiki").href = "https://no.wikipedia.org/wiki/" + currentLocation;
 }
 
 var showText = function (target, text, index, interval) {

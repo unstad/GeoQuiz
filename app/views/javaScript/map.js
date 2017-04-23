@@ -81,13 +81,7 @@ polyline.addTo(map);
 var isCorrect=false; //Katharina
 function onMapClick(e) {
     var clickedPoint = e.latlng;
-
-    console.log(clickedPoint);
-
-    console.log("answerPolygon");
-    console.log(answerPolygon.getBounds());
     if (answerPolygon.getBounds().contains(clickedPoint)) {
-        console.log("Correct answer!");
         correctSound.play();
         alert("Riktig! Trykk Neste spørsmål for å gå videre til neste oppgave.");
         console.log(answerText);

@@ -63,11 +63,6 @@ db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function(){
     console.log("connected")});
 
-
-var Questions = require('./app/models/allQuestions');
-
-for(var i = 0; i < Questions.length; i++) console.log(Questions[i].answer_city);
-
 // Initialize game routes
 game(app);
 

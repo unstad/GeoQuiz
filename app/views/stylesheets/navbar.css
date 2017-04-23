@@ -10,6 +10,9 @@ ul {
 li {
     float: left;
 }
+li:first-child{
+    height: 47.99px;
+}
 
 li a {
     display: block;
@@ -17,6 +20,9 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+}
+.tagline {
+    padding: 14px 50px 14px 10px;
 }
 li:last-child {
     display: block;
@@ -33,4 +39,9 @@ li:last-child {
 /* Change the link color to #111 (black) on hover */
 li a:hover {
     background-color: cornflowerblue;
+}
+.globus {
+    height: 30px;
+    width: 30px;
+    padding: 10px 0px 0px 10px;
 }
