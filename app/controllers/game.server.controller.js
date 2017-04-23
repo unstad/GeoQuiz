@@ -13,10 +13,11 @@ exports.render = function(req, res) {
 	  title: 'GeoQuiz'
 	});
 };
-
+var id = 1;
+//TODO sjekke om den stemmer når resten er ferdig!
 // Finn det første spørsmålet som ikke har noe svar
 exports.nextQuestion = function(req, res) {
-	return Question.findOne({'answered': false}, function (err, question) {
+	return Question.findOne({'_id': id, 'answered': false}, function (err, question) {
 		if (err) {
 			errorMessage(err, res);
 			return;
@@ -49,7 +50,10 @@ exports.answerQuestion = function(req, res) {
 		var lat = answer[0];
 		var lon = answer[1];
 		*/
-		if (question.answer_city !== answerFromUser) {
+
+		// hvis kartet returnerer true:
+
+		if (question.answered==false) {
 			res.status(400).json({'status': 400, 'message': 'Incorrect answer'});
 			return;
 		}
@@ -57,6 +61,7 @@ exports.answerQuestion = function(req, res) {
 		question.save(function (err) {
 			console.log('Failed store question with id ' + questionId);
 		});
+		req.nextQuestion();	// TODO funker denne???
 		res.json({'status': 200, 'message': 'Answer accepted'});
 	});
 };

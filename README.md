@@ -23,3 +23,7 @@ Besvar spørsmål:
 
 Tilbakestill spørsmål:
 `curl localhost:3000/api/questions/reset | python -m json.tool`
+
+Icons from
+http://iconbug.com/detail/icon/2902/ski-house/
+https://www.vexels.com/png-svg/preview/128931/travel-bag-icon
