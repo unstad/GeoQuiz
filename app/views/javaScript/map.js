@@ -35,7 +35,7 @@ var answerText = 'Hello GIS-World';
 
 var checkDistance = function(e){
     console.log(e.distanceTo(63.41504, 10.40983));
-}
+};
 
 // var checkAnswer = function(geojson, e){
 //     var gjLayer = L.geoJson(geojson);
@@ -60,21 +60,25 @@ var checkDistance = function(e){
 
 
 // checking if answer area is clicked correctly
-function onMapClick(e){
-    var  clickedPoint = e.latlng;
+function onMapClick(e) {
+    var clickedPoint = e.latlng;
 
-    console.log("clicked "+ clickedPoint);
+    console.log("clicked " + clickedPoint);
 
     if (answerPolygon.getBounds().contains(clickedPoint)) {
+        correctSound.play();
         console.log(answerText);
         correctPlaces.push(clickedPoint);
         L.marker(clickedPoint).addTo(map); // marker som etter hvert skal ha samlet inn alle stedene vi har vært innom :)
         //TODO send true to game controller to react to correct answer
         console.log(correctPlaces);
     }
-    else
-        console.log(false);
-        //TODO send false to game controller to react to wrong answer
+    else {
+        snd.play();
+        alert("Du har nok reist feil. Prøv på nytt!");
+    }
+}
+
 
     /*
 =======
@@ -94,7 +98,6 @@ function onMapClick(e){
 
 
     //questionHandler(e.latLng)*/
-        }
 map.on('click', onMapClick);
 // };
 
