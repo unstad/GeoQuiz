@@ -1,6 +1,3 @@
-
-
-
 //initialize map with given center and zoom
 const map = L.map('mapid').setView(L.latLng(63.42239, 10.42993), 13);
 
@@ -21,6 +18,7 @@ var osmGeocoder = new L.Control.OSMGeocoder();
 
 map.addControl(osmGeocoder);
 
+var correctPlaces = new Array;
 // quiz function(s):
 
 
@@ -59,17 +57,20 @@ var checkDistance = function(e){
 // }
 
 
-// doing something when clicked on map
+
+
+// checking if answer area is clicked correctly
 function onMapClick(e){
     var  clickedPoint = e.latlng;
 
     console.log("clicked "+ clickedPoint);
 
     if (answerPolygon.getBounds().contains(clickedPoint)) {
-        // answerPolygon.bindPopup(answerText).openOn(map); blir ikke gjenkjent som funksjon -.-
         console.log(answerText);
+        correctPlaces.push(clickedPoint);
         L.marker(clickedPoint).addTo(map); // marker som etter hvert skal ha samlet inn alle stedene vi har vært innom :)
         //TODO send true to game controller to react to correct answer
+        console.log(correctPlaces);
     }
     else
         console.log(false);
