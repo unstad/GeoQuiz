@@ -5,8 +5,7 @@
   <link rel='stylesheet' href="stylesheets/game.css" />
   <script src="javaScript/question.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://unpkg.com/@mapbox/leaflet-pip@latest/leaflet-pip.js"></script>
-  <script>
+  <script>//Start-button functionality
       $(document).ready(function(){
           $("button").click(function(){
               $.post('api/questions/reset');
@@ -15,7 +14,6 @@
           })
       });
   </script>
-
 
   <!-- JS and stylesheet needed for map -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
@@ -29,46 +27,27 @@
     <script src="./javaScript/Control.OSMGeocoder.js"></script>
     <link rel="stylesheet" href="./stylesheets/Control.OSMGeocoder.css" />
 
-
-
 </head>
 <body>
 <%- include partials/navbar.ejs %>
 
 <div id="content">
-  <div class="left w50">
+  <div class="left">
     <div id="question" class="question">'
   <script>showText("question", "Velkommen til GeoQuiz og en reise rundt jorden. Spillet går ut på å løse rebuser " +
-          "og gjette i kartet når du tror du vet hvor du skal. Klarer du oppgaven får du en ny, og turen fortsetter. Oppgavene er noen" +
-          " skikkelige nøtter, så ta deg god tid. Det kan være lurt å  bruke søk og Wikipedia om du står fast. <br> <br> Lykke til på reisen!", 0, 30)</script>
+          "og gjette i kartet når du tror du vet hvor du skal. Klarer du oppgaven får du en ny, og turen fortsetter. " +
+          "Oppgavene er noen skikkelige nøtter, så ta deg god tid. Det kan være lurt å  bruke søk og Wikipedia om du " +
+          "står fast. <br> <br> Lykke til på reisen!", 0, 30)</script>
     </div>
-
-
-
 
     <button class="nextButton" type="button">Start Quiz</button>
 
     <span id="text_target"></span>
   </div>
-  <div id="mapid" class="right w50">
+
+  <div id="mapid" class="right">
     <script src="/javaScript/map.js"></script>
-    <script>
-        map.on('click', onMapClick);
-        function onMapClick(e){
-            $.get("/api/questions/coors", function(data){
-                //TODO call function with click place e and polygon data
-            });
-        }
-//            clickedPoint = e.latlng;
-//            console.log("clicked "+ clickedPoint);
-//        }
-    </script>
-
   </div>
-
 </div>
 </body>
-<!--<h1><%= title %></h1>-->
-<!--<p>Welcome to <%= title %></p>-->
-<!--</body>-->
 </html>

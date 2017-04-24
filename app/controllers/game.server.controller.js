@@ -14,22 +14,10 @@ exports.render = function(req, res) {
 	});
 };
 var id = 0;
-//TODO sjekke om den stemmer når resten er ferdig!
-// Finn det første spørsmålet som ikke har noe svar
-exports.nextQuestion = function(req, res) {
-	return Question.findOne({'_id': id, 'answered': false}, function (err, question) {
-		if (err) {
-			errorMessage(err, res);
-			return;
-		}
-		res.json(Question);
-	});
-};
 
 exports.question = function(req, res) {
 	id++;
 	console.log(id);
-    //Katharina: endret fra answered: false til _id
     return Question.findOne({'_id': id}, function (err, question) {
         if (err) {
             errorMessage(err, res);
@@ -40,7 +28,6 @@ exports.question = function(req, res) {
 };
 
 exports.questionCoordinates = function(req, res) {
-	//Katharina: endret fra answered: false til _id
     return Question.findOne({'_id': id}, function (err, question) {
         if (err) {
             errorMessage(err, res);
@@ -79,5 +66,4 @@ exports.resetAnswers = function(req, res) {
 };
 
 exports.checkAnswer = function (req, res) {
-
 };

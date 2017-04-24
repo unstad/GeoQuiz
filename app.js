@@ -7,9 +7,6 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var game = require('./app/routes/game.server.routes');
 
-
-var Quiz = require('./app/models/quizSchema');
-
 var app = express();
 var router = express.Router();
 
