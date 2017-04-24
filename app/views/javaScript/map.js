@@ -88,7 +88,7 @@ function onMapClick(e) {
     var clickedPoint = e.latlng;
     if (answerPolygon.getBounds().contains(clickedPoint)) {
         correctSound.play();
-        alert("Riktig! Trykk Neste spørsmål for å gå videre til neste oppgave.");
+        alert("Da har du reist til riktig sted! Gratulerer!");
         console.log(answerText);
         polyline.addLatLng(clickedPoint);
         L.marker(clickedPoint, {icon: L.icon({
